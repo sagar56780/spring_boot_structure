@@ -1,0 +1,25 @@
+package edu.qs.Employee;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+import edu.qs.Employee.EmployeeRepository.EmployeeRepository;
+import edu.qs.Employee.entity.Employee;
+
+@Controller
+public class EmployeeController {
+	@Autowired
+	EmployeeRepository repo;
+	@PostMapping("/addEmployee")
+	public void addEmployee(@RequestBody Employee e)
+	{
+		
+		repo.save(e);
+		
+	}
+	
+
+}

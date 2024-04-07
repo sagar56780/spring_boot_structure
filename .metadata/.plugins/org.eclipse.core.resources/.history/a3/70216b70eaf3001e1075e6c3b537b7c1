@@ -1,0 +1,5 @@
+package edu.qs.spring_db.exceptions;
+
+public class ExceptioinHandler {
+
+}

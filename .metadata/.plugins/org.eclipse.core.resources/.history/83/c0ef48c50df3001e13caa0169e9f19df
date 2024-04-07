@@ -1,0 +1,27 @@
+package edu.qs.spring_db;
+
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.qs.spring_db.entity.Cricketer;
+
+@RestController)
+public class CricketerController {
+	@GetMapping("/consume/{id}")
+	public Cricketer getCricketer(@PathVariable int id) {
+		Optional<Cricketer> cric=repo.findById(id);
+		if(cric.isPresent())
+		{
+			return cric.get();
+		}
+		else {
+			return null;
+		}
+	}
+	
+
+}

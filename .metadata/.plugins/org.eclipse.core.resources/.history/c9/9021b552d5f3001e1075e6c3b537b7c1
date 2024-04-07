@@ -1,0 +1,40 @@
+package edu.qs.spring_db;
+
+import java.util.Optional;
+
+import javax.swing.text.html.Option;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import edu.qs.spring_db.entity.Cricketer;
+import edu.qs.spring_db.repository.CricketerRepository;
+import edu.qs.spring_db.response_structure.ResponseStructure;
+
+@Controller
+public class ResponseStructureController {
+	@Autowired
+	CricketerRepository repo;
+	
+	@GetMapping("/get_cricketer/{id}")
+	public ResponseStructure<Cricketer> getStudentData(@PathVariable int id)
+	{
+		Optional<Cricketer> op=repo.findById(id);
+		ResponseStructure<Cricketer> rs=new ResponseStructure<Cricketer>();
+		if(op.isPresent())
+		{
+			rs.setData(op.get());
+			rs.setStatus(200);
+			rs.setMessage("data found successfully");
+		}
+		else {
+			rs.setStatus(404);
+			rs.setMessage("data not present");
+			rs.setData(null);
+		}
+	}
+
+}

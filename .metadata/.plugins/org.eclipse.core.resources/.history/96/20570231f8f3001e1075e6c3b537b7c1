@@ -1,0 +1,13 @@
+package edu.qs.Employee.service;
+
+import org.springframework.stereotype.Service;
+
+import edu.qs.Employee.entity.Student;
+
+@Service
+public class StudentService {
+	public Student getStudent(int id) {
+		return null;
+	}
+
+}

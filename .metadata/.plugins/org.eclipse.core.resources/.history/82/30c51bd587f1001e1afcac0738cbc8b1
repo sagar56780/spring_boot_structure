@@ -1,0 +1,10 @@
+package edu.qs.spring_db;
+
+@SpringBootApplication
+public class SpringDbApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringDbApplication.class, args);
+	}
+
+}

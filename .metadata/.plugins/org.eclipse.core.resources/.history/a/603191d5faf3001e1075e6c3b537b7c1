@@ -1,0 +1,62 @@
+package edu.qs.Employee.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.qs.Employee.entity.Student;
+import edu.qs.Employee.response_structure.ResponseStructure;
+import edu.qs.Employee.service.StudentService;
+
+@RestController
+public class StudentConteroller {
+	
+	@Autowired
+	StudentService studentService;
+	
+	@GetMapping("/student/{id}")
+	public ResponseEntity<ResponseStructure<Student> >getStudent(@PathVariable int id){
+		ResponseStructure<Student> rs=new ResponseStructure<Student>();
+		Student student=new Student();
+		if(studentService.getStudent(id)!=null)
+		{
+			rs.setStatusCode(HttpStatus.ACCEPTED.value());
+			rs.setMessage("Student data founded");
+			rs.setData(student);
+			
+			return new ResponseEntity<ResponseStructure<Student>>(rs, HttpStatus.ACCEPTED);
+			
+			
+		}
+		else
+		{
+			rs.setStatusCode(HttpStatus.NOT_FOUND.value());
+			rs.setMessage("student data not found");
+			rs.setData(null);
+			return new ResponseEntity<ResponseStructure<Student>>(rs, HttpStatus.NOT_FOUND);
+		}
+			
+	}
+	
+	@PostMapping("/student")
+	public ResponseEntity<ResponseStructure<Student>> saveStudent(@RequestBody Student s)
+	{
+		Student temp=studentService.getStudent(s.getId());
+		if(temp==null)
+		{
+			
+		}
+		
+		
+	}
+	
+	
+	
+
+}

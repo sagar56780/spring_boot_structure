@@ -1,0 +1,5 @@
+package edu.qs.Employee.entity;
+
+public class Employee {
+
+}

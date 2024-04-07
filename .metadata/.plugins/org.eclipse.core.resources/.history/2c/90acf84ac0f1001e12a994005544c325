@@ -1,0 +1,28 @@
+package edu.qs.spring_db;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.qs.spring_db.entity.Cricketer;
+import edu.qs.spring_db.repository.CricketerRepository;
+
+@RestController
+public class RestControl {
+	@Autowired
+	CricketerRepository repo;
+	@Autowired
+	Cricketer cricketer;
+//	@PostMapping("/crik")
+	public void setCricketer(@RequestBody Cricketer c) {
+		repo.save(c);
+	}
+	@GetMapping("/crik")
+	public Cricketer getCricketer()
+	{
+		return null;
+		
+	}
+}

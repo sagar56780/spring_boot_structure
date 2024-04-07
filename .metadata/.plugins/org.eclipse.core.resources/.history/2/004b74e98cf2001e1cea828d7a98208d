@@ -1,0 +1,12 @@
+package edu.qs.Employee.EmployeeRepository;
+
+import org.hibernate.query.criteria.JpaCoalesce;
+import org.springframework.data.jpa.repository.JpaContext;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import edu.qs.Employee.entity.Employee;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+	
+
+}

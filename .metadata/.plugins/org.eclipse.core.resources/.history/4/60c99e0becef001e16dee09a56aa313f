@@ -1,0 +1,12 @@
+package edu.qs.sprint_boot_demo;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RestControlDemo {
+	public String display()
+	{
+		return "hello Boot";
+	}
+
+}
